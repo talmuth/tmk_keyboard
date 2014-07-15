@@ -73,7 +73,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 KEYMAP(
     NO  , NO  , NO  , NO  , NO  , NO  ,                                           NO  , NO  , NO  , NO  , NO  , NO  ,
     ESC , FN11, FN12, FN13, FN14, FN15,                                           FN16, FN17, FN18, FN19, FN10, PAUS,
-    GRV , EQL , D   , R   , W   , B   ,                                           J   , F   , U   , P   , LBRC, RBRC,
+    GRV , BSPC, D   , R   , W   , B   ,                                           J   , F   , U   , P   , LBRC, RBRC,
     Q   , A   , S   , FN3 , T   , G   ,                                           Y   , N   , E   , O   , I   , QUOT,
     FN7 , Z   , X   , M   , C   , V   , INS , 1   , 2   ,       RALT, HOME, END , K   , L   , COMM, DOT , SLSH, BSLS,
           LALT, LCTL, TAB , FN24,       FN20, FN2 , GRV ,       RGUI, FN22, FN1 ,       LEFT, UP  , DOWN, RGHT,
@@ -84,7 +84,7 @@ KEYMAP(
 KEYMAP(
     NO  , NO  , NO  , NO  , NO  , NO  ,                                           NO  , NO  , NO  , NO  , NO  , NO  ,
     F12 , F1  , F2  , F3  , F4  , F5  ,                                           F6  , F7  , F8  , F9  , F10 , F11 ,
-    FN0 , TRNS, TRNS, TRNS, TRNS, TRNS,                                           TRNS, FN30, 9   , 8   , TRNS, TRNS,
+    FN0 , DEL , TRNS, TRNS, TRNS, TRNS,                                           TRNS, FN30, 9   , 8   , TRNS, TRNS,
     FN31, F10 , F2  , TRNS, F4  , TRNS,                                           2   , 1   , 0   , 7   , 6   , FN8 ,
     FN5 , F9  , F8  , F6  , F5  , FN6 , PSCR, MINS, 1   ,       TRNS, PGUP, PGDN, 3   , 4   , 5   , TRNS, TRNS, FN29,
           TRNS, TRNS, SPC , FN25,       FN21, TRNS, TRNS,       TRNS, FN23, TRNS,       HOME, PGUP, PGDN, END ,
@@ -181,8 +181,8 @@ static const uint16_t PROGMEM fn_actions[] = {
     [18] = ACTION_MODS_KEY(MOD_LSFT, KC_8),
     [19] = ACTION_MODS_KEY(MOD_LSFT, KC_9),
 
-    [20] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_BSPC),
-    [21] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_DEL),
+    [20] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_EQL),
+    [21] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_PPLS),
     [22] = ACTION_MODS_TAP_KEY(MOD_RSFT, KC_MINS),
     [23] = ACTION_MODS_TAP_KEY(MOD_RSFT, KC_PPLS),
     [24] = ACTION_MODS_TAP_KEY(MOD_LGUI, KC_ENT),
