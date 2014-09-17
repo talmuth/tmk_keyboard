@@ -76,7 +76,7 @@ KEYMAP(
     GRV , BSPC, D   , R   , W   , B   ,                                           J   , F   , U   , P   , LBRC, RBRC,
     Q   , A   , S   , FN3 , T   , G   ,                                           Y   , N   , E   , O   , I   , QUOT,
     FN7 , Z   , X   , M   , C   , V   , INS , 1   , 2   ,       RALT, HOME, END , K   , L   , COMM, DOT , SLSH, MINS,
-          LALT, LCTL, TAB , FN24,       FN20, FN2 , GRV ,       RGUI, FN22, FN1 ,       LEFT, UP  , DOWN, RGHT,
+          LALT, FN20, TAB , FN24,       LSFT, FN2 , GRV ,       RGUI, FN22, FN1 ,       LEFT, UP  , DOWN, RGHT,
                                                     DEL ,       RCTL
 ),
 
@@ -181,7 +181,7 @@ static const uint16_t PROGMEM fn_actions[] = {
     [18] = ACTION_MODS_KEY(MOD_LSFT, KC_8),
     [19] = ACTION_MODS_KEY(MOD_LSFT, KC_9),
 
-    [20] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_EQL),
+    [20] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_EQL),
     [21] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_F16),
     [22] = ACTION_MODS_TAP_KEY(MOD_RSFT, KC_BSLS),
     [23] = ACTION_MODS_TAP_KEY(MOD_RSFT, KC_F17),
