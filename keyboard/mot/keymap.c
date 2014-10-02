@@ -75,9 +75,9 @@ KEYMAP(
     ESC , FN11, FN12, FN13, FN14, FN15,                                           FN16, FN17, FN18, FN19, FN10, PAUS,
     GRV , BSPC, D   , R   , W   , B   ,                                           J   , F   , U   , P   , LBRC, RBRC,
     Q   , A   , S   , FN3 , T   , G   ,                                           Y   , N   , E   , O   , I   , QUOT,
-    FN7 , Z   , X   , M   , C   , V   , INS , 1   , 2   ,       RALT, HOME, END , K   , L   , COMM, DOT , SLSH, MINS,
-          LALT, FN20, TAB , FN24,       LSFT, FN2 , GRV ,       RGUI, FN22, FN1 ,       LEFT, UP  , DOWN, RGHT,
-                                                    DEL ,       RCTL
+    SCLN, Z   , X   , M   , C   , V   , INS , GRV , 2   ,       RALT, HOME, END , K   , L   , COMM, DOT , SLSH, MINS,
+          LALT, FN20, TAB , FN24,       LSFT, FN2 , 1   ,       RGUI, FN22, FN1 ,       LEFT, UP  , DOWN, RGHT,
+                                                    FN7 ,       RCTL
 ),
 
 // Layer1
@@ -88,7 +88,7 @@ KEYMAP(
     FN31, F10 , F2  , TRNS, F4  , TRNS,                                           2   , 1   , 0   , 7   , 6   , FN8 ,
     FN5 , F9  , F8  , F6  , F5  , FN6 , PSCR, MINS, F18 ,       TRNS, PGUP, PGDN, 3   , 4   , 5   , TRNS, TRNS, PPLS,
           TRNS, TRNS, SPC , FN25,       FN21, TRNS, TRNS,       TRNS, FN23, TRNS,       HOME, PGUP, PGDN, END ,
-                                                    BSPC,       TRNS
+                                                    TRNS,       TRNS
 ),
 
 };
@@ -162,7 +162,7 @@ static const uint16_t PROGMEM fn_actions[] = {
     [ 0] = ACTION_FUNCTION(TEENSY_KEY),                    // FN0  - Teensy key - reboot to programmator mode
 //  [ 1] = ACTION_LAYER_MOMENTARY(1),
     [ 1] = ACTION_LAYER_TAP_KEY(1, KC_SPC),
-    [ 2] = ACTION_LAYER_TAP_KEY(1, KC_SCLN),
+    [ 2] = ACTION_LAYER_TAP_KEY(1, KC_DEL),
     [ 3] = ACTION_LAYER_TAP_KEY(1, KC_H),
 
     [ 5] = ACTION_MODS_KEY(MOD_LGUI | MOD_LSFT, KC_0),
