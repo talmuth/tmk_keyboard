@@ -72,23 +72,23 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Layer0
 KEYMAP(
     NO  , NO  , NO  , NO  , NO  , NO  ,                                           NO  , NO  , NO  , NO  , NO  , NO  ,
-    ESC , FN11, FN12, FN13, FN14, FN15,                                           FN16, FN17, FN18, FN19, FN10, PAUS,
+    NO  , NO  , NO  , NO  , NO  , NO  ,                                           NO  , NO  , NO  , NO  , NO  , NO  ,
     GRV , BSPC, D   , R   , W   , B   ,                                           J   , F   , U   , P   , LBRC, RBRC,
     Q   , A   , S   , FN3 , T   , G   ,                                           Y   , N   , E   , O   , I   , QUOT,
     SCLN, Z   , X   , M   , C   , V   , INS , GRV , 2   ,       RALT, HOME, END , K   , L   , COMM, DOT , SLSH, MINS,
           LALT, FN20, TAB , FN24,       LSFT, FN2 , 1   ,       RGUI, FN22, FN1 ,       LEFT, UP  , DOWN, RGHT,
-                                                    FN7 ,       RCTL
+                                                    ESC ,       RCTL
 ),
 
 // Layer1
 KEYMAP(
     NO  , NO  , NO  , NO  , NO  , NO  ,                                           NO  , NO  , NO  , NO  , NO  , NO  ,
-    F12 , F1  , F2  , F3  , F4  , F5  ,                                           F6  , F7  , F8  , F9  , F10 , F11 ,
-    FN0 , DEL , TRNS, TRNS, TRNS, TRNS,                                           TRNS, FN30, 9   , 8   , TRNS, TRNS,
-    FN31, F10 , F2  , TRNS, F4  , TRNS,                                           2   , 1   , 0   , 7   , 6   , FN8 ,
-    FN5 , F9  , F8  , F6  , F5  , FN6 , PSCR, MINS, F18 ,       TRNS, PGUP, PGDN, 3   , 4   , 5   , TRNS, TRNS, PPLS,
+    NO  , NO  , NO  , NO  , NO  , NO  ,                                           NO  , NO  , NO  , NO  , NO  , NO  ,
+    FN0 , DEL , F7  , F11 , F12 , F1  ,                                           CAPS, FN30, 9   , 8   , TRNS, TRNS,
+    FN31, F10 , F2  , TRNS, F4  , F3  ,                                           3   , 1   , 0   , 2   , 7   , TRNS,
+    FN5 , F9  , F8  , F6  , F5  , TRNS, PSCR, MINS, F18 ,       TRNS, PGUP, PGDN, 6   , 4   , 5   , TRNS, TRNS, PPLS,
           TRNS, TRNS, SPC , FN25,       FN21, TRNS, TRNS,       TRNS, FN23, TRNS,       HOME, PGUP, PGDN, END ,
-                                                    TRNS,       TRNS
+                                                    FN7 ,       TRNS
 ),
 
 };
@@ -166,20 +166,20 @@ static const uint16_t PROGMEM fn_actions[] = {
     [ 3] = ACTION_LAYER_TAP_KEY(1, KC_H),
 
     [ 5] = ACTION_MODS_KEY(MOD_LGUI | MOD_LSFT, KC_0),
-    [ 6] = ACTION_MODS_KEY(MOD_LALT | MOD_LSFT, KC_V),
+//    [ 6] = ACTION_MODS_KEY(MOD_LALT | MOD_LSFT, KC_V),
     [ 7] = ACTION_MODS_KEY(MOD_LGUI, KC_Z),
-    [ 8] = ACTION_MODS_KEY(MOD_LSFT, KC_SCLN),
+//    [ 8] = ACTION_MODS_KEY(MOD_LSFT, KC_SCLN),
 
-    [10] = ACTION_MODS_KEY(MOD_LSFT, KC_0),
-    [11] = ACTION_MODS_KEY(MOD_LSFT, KC_1),
-    [12] = ACTION_MODS_KEY(MOD_LSFT, KC_2),
-    [13] = ACTION_MODS_KEY(MOD_LSFT, KC_3),
-    [14] = ACTION_MODS_KEY(MOD_LSFT, KC_4),
-    [15] = ACTION_MODS_KEY(MOD_LSFT, KC_5),
-    [16] = ACTION_MODS_KEY(MOD_LSFT, KC_6),
-    [17] = ACTION_MODS_KEY(MOD_LSFT, KC_7),
-    [18] = ACTION_MODS_KEY(MOD_LSFT, KC_8),
-    [19] = ACTION_MODS_KEY(MOD_LSFT, KC_9),
+//    [10] = ACTION_MODS_KEY(MOD_LSFT, KC_0),
+//    [11] = ACTION_MODS_KEY(MOD_LSFT, KC_1),
+//    [12] = ACTION_MODS_KEY(MOD_LSFT, KC_2),
+//    [13] = ACTION_MODS_KEY(MOD_LSFT, KC_3),
+//    [14] = ACTION_MODS_KEY(MOD_LSFT, KC_4),
+//    [15] = ACTION_MODS_KEY(MOD_LSFT, KC_5),
+//    [16] = ACTION_MODS_KEY(MOD_LSFT, KC_6),
+//    [17] = ACTION_MODS_KEY(MOD_LSFT, KC_7),
+//    [18] = ACTION_MODS_KEY(MOD_LSFT, KC_8),
+//    [19] = ACTION_MODS_KEY(MOD_LSFT, KC_9),
 
     [20] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_EQL),
     [21] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_F16),
@@ -188,7 +188,7 @@ static const uint16_t PROGMEM fn_actions[] = {
     [24] = ACTION_MODS_TAP_KEY(MOD_LGUI, KC_ENT),
     [25] = ACTION_MODS_KEY(MOD_LGUI, KC_ENT),
 
-    [29] = ACTION_MACRO(C_COMMENT),
+//    [29] = ACTION_MACRO(C_COMMENT),
     [30] = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT|MOD_LGUI, KC_F), // ACTION_MACRO(JIRA_NOFORMAT),
     [31] = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT|MOD_LGUI, KC_Q), // ACTION_MACRO(JIRA_QUOTE),
 };
