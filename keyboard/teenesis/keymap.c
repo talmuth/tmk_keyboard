@@ -58,7 +58,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Layer0
 KEYMAP(
-    0   , 1   , 2   , 3   , 4   , 5   ,                                           6   , 7   , 8   , 9   , MINS, EQL ,
+    NO  , NO  , NO  , NO  , NO  , NO  ,                                           NO  , NO  , NO  , NO  , NO  , NO,
     DEL , BSPC, D   , R   , W   , B   ,                                           J   , F   , U   , P   , LBRC, RBRC,
     Q   , A   , S   , FN3 , T   , G   ,                                           Y   , N   , E   , O   , I   , QUOT,
     FN8 , Z   , X   , M   , C   , V   ,       INS , 2   ,       RALT, HOME,       K   , L   , COMM, DOT , SLSH, FN9 ,
@@ -66,12 +66,32 @@ KEYMAP(
                                                     FN7 ,       RCTL
 ),
 
-// Layer1
+// Layer1 - original Kinesis
+KEYMAP(
+    EQL , 0   , 1   , 2   , 3   , 4   ,                                           5   , 6   , 7   , 8   , 9   , MINS,
+    TAB , Q   , W   , E   , R   , T   ,                                           Y   , U   , I   , O   , P   , BSLS,
+    CAPS, A   , S   , D   , F   , G   ,                                           H   , J   , K   , L   , SCLN, QUOT,
+    LSFT, Z   , X   , C   , V   , B   ,       LCTL, LALT,       RGUI, RCTL,       N   , M   , COMM, DOT , SLSH, RSFT,
+          GRV , BSLS, LEFT, RGHT,       BSPC, DEL , HOME,       PGUP, ENT , FN1 ,       UP  , DOWN, LBRC, RBRC,
+                                                    END ,       PGDN
+),
+
+// Layer2
+KEYMAP(
+    NO  , NO  , NO  , NO  , NO  , NO  ,                                           NO  , NO  , NO  , NO  , NO  , NO,
+    TRNS, DEL , F7  , F12 , F11 , F1  ,                                           TRNS, TRNS, 4   , 5   , TRNS, TRNS,
+    TRNS, F10 , F2  , TRNS, F4  , F3  ,                                           3   , 1   , 0   , 2   , 7   , EQL ,
+    TRNS, F9  , F8  , F6  , F5  , TRNS,       PSCR, F18 ,       TRNS, PGUP,       6   , 9   , 8   , TRNS, TRNS, PPLS,
+          TRNS, TRNS, SPC , TRNS,       FN21, TRNS, FN0 ,       TRNS, FN23, TRNS,       HOME, PGUP, PGDN, END ,
+                                                    MINS,       TRNS
+),
+
+// Layer3
 KEYMAP(
     NO  , NO  , NO  , NO  , NO  , NO  ,                                           NO  , NO  , NO  , NO  , NO  , NO  ,
-    TRNS, DEL , F7  , F12 , F11 , F1  ,                                           CAPS, TRNS, 4   , 5   , TRNS, TRNS,
-    TRNS, F10 , F2  , TRNS, F4  , F3  ,                                           3   , 1   , 0   , 2   , 7   , SCLN,
-    TRNS, F9  , F8  , F6  , F5  , TRNS,       PSCR, F18 ,       TRNS, PGUP,       6   , 9   , 8   , TRNS, TRNS, PPLS,
+    TRNS, DEL , F7  , F12 , F11 , F1  ,                                           TRNS, TRNS, FN14, FN15, TRNS, TRNS,
+    FN31, F10 , F2  , TRNS, F4  , F3  ,                                           FN13, FN11, FN10, FN12, FN17, EQL ,
+    TRNS, F9  , F8  , F6  , F5  , TRNS,       TRNS, F18 ,       TRNS, PGDN,       FN16, FN19, FN18, TRNS, TRNS, PPLS,
           TRNS, TRNS, SPC , TRNS,       FN21, TRNS, FN0 ,       TRNS, FN23, TRNS,       HOME, PGUP, PGDN, END ,
                                                     MINS,       TRNS
 ),
@@ -146,9 +166,9 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
 static const uint16_t PROGMEM fn_actions[] = {
     [ 0] = ACTION_FUNCTION(TEENSY_KEY),                    // FN0  - Teensy key - reboot to programmator mode
     // [ 1] = ACTION_LAYER_MOMENTARY(1),
-    [ 1] = ACTION_LAYER_TAP_KEY(1, KC_SPC),
-    [ 2] = ACTION_LAYER_TAP_KEY(1, KC_ESC),
-    [ 3] = ACTION_LAYER_TAP_KEY(1, KC_H),
+    [ 1] = ACTION_LAYER_TAP_KEY(3, KC_SPC),
+    [ 2] = ACTION_LAYER_TAP_KEY(2, KC_ESC),
+    [ 3] = ACTION_LAYER_TAP_KEY(2, KC_H),
     // [ 4] = ACTION_LAYER_TOGGLE(1),
     [ 4] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_ENT),
     // [ 5] = ACTION_MODS_KEY(MOD_LGUI | MOD_LSFT, KC_0),
@@ -158,27 +178,28 @@ static const uint16_t PROGMEM fn_actions[] = {
     [ 8] = ACTION_MODS_TAP_KEY(MOD_LALT | MOD_LGUI | MOD_LCTL, KC_SCLN), // META combo MOD_LALT | MOD_LGUI | MOD_LCTL
     [ 9] = ACTION_MODS_TAP_KEY(MOD_LALT | MOD_LGUI | MOD_LCTL, KC_MINS), // META combo MOD_LALT | MOD_LGUI | MOD_LCTL
 
-    // [10] = ACTION_MODS_KEY(MOD_LSFT, KC_0),
-    // [11] = ACTION_MODS_KEY(MOD_LSFT, KC_1),
-    // [12] = ACTION_MODS_KEY(MOD_LSFT, KC_2),
-    // [13] = ACTION_MODS_KEY(MOD_LSFT, KC_3),
-    // [14] = ACTION_MODS_KEY(MOD_LSFT, KC_4),
-    // [15] = ACTION_MODS_KEY(MOD_LSFT, KC_5),
-    // [16] = ACTION_MODS_KEY(MOD_LSFT, KC_6),
-    // [17] = ACTION_MODS_KEY(MOD_LSFT, KC_7),
-    // [18] = ACTION_MODS_KEY(MOD_LSFT, KC_8),
-    // [19] = ACTION_MODS_KEY(MOD_LSFT, KC_9),
+    [10] = ACTION_MODS_KEY(MOD_LSFT, KC_0),
+    [11] = ACTION_MODS_KEY(MOD_LSFT, KC_1),
+    [12] = ACTION_MODS_KEY(MOD_LSFT, KC_2),
+    [13] = ACTION_MODS_KEY(MOD_LSFT, KC_3),
+    [14] = ACTION_MODS_KEY(MOD_LSFT, KC_4),
+    [15] = ACTION_MODS_KEY(MOD_LSFT, KC_5),
+    [16] = ACTION_MODS_KEY(MOD_LSFT, KC_6),
+    [17] = ACTION_MODS_KEY(MOD_LSFT, KC_7),
+    [18] = ACTION_MODS_KEY(MOD_LSFT, KC_8),
+    [19] = ACTION_MODS_KEY(MOD_LSFT, KC_9),
 
     [20] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_GRV),
     [21] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_F16),
     [22] = ACTION_MODS_TAP_KEY(MOD_RSFT, KC_BSLS),
     [23] = ACTION_MODS_TAP_KEY(MOD_RSFT, KC_F17),
-    [24] = ACTION_MODS_TAP_KEY(MOD_LGUI, KC_EQL),
+    [24] = ACTION_MODS_ONESHOT(MOD_LGUI),
     // [25] = ACTION_MODS_KEY(MOD_LGUI, KC_ENT),
 
     // [29] = ACTION_MACRO(C_COMMENT),
     // [30] = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT|MOD_LGUI, KC_F), // ACTION_MACRO(JIRA_NOFORMAT),
     // [31] = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT|MOD_LGUI, KC_Q), // ACTION_MACRO(JIRA_QUOTE),
+    [31] = ACTION_LAYER_TOGGLE(1),
 };
 
 #define KEYMAPS_SIZE    (sizeof(keymaps) / sizeof(keymaps[0]))
