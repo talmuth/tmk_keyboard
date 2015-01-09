@@ -137,4 +137,6 @@ micro: all
 cub: OPT_DEFS += -DKEYMAP_CUB
 cub: all
 
+tlmt: OPT_DEFS += -DKEYMAP_TLMT -DERGODOX_HORISONTAL_KEYMAP
+tlmt: all
 
