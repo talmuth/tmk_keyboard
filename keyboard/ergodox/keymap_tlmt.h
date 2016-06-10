@@ -13,12 +13,12 @@ TRNS, TRNS, TRNS, TRNS, TRNS,             TRNS, TRNS, TRNS,   TRNS, TRNS, TRNS, 
 
 // Layer_00: QUERTY
 KEYMAP(
-ESC , 1   , 2   , 3   , 4   , 5   , MINS,                                       EQL , 6   , 7   , 8   , 9   , 0   , BSPC,
-TAB , Q   , W   , E   , R   , T   , FN2 ,                                       LBRC, Y   , U   , I   , O   , P   , QUOT,
-ESC , A   , S   , D   , F   , G   ,                                                   H   , J   , K   , L   , SCLN, ENT ,
-LSFT, Z   , X   , C   , V   , B   , FN1 ,       GRV , LALT,   LBRC, RBRC,       FN3 , N   , M   , COMM, DOT , SLSH, RSFT,
-LGUI, LCTL, BSLS, LGUI, LALT,             SPC , FN5 , HOME,   PGUP, ENT , SPC ,             RGUI, LEFT, DOWN, UP  , RGHT,
-                                                      END ,   PGDN
+GRV  , 1   , 2   , 3   , 4   , 5   , MINS,                                       EQL , 6   , 7   , 8   , 9   , 0   , RBRC,
+TAB  , Q   , W   , E   , R   , T   , FN2 ,                                       LBRC, Y   , U   , I   , O   , P   , BSLS,
+FN8  , A   , S   , D   , F   , G   ,                                                   H   , J   , K   , L   , SCLN, QUOT,
+LSFT , Z   , X   , C   , V   , B   , ENT ,     F9  , F10 ,   F11 , F12 ,         ENT , N   , M   , COMM, DOT , SLSH, RSFT,
+LCTRL, LCTL, BSLS, LALT, FN9,             FN7, FN5 , HOME,   PGUP, SPC , ENT ,               RGUI, LEFT, DOWN, UP  , RGHT,
+                                                     END ,   PGDN
 ),
 
 // Layer_01: FX + media keyes
@@ -26,9 +26,9 @@ KEYMAP(
 PWR , F1  , F2  , F3  , F4  , F5  , F11 ,                                       F12 , F6  , F7  , F8  , F9  , F10 , TRNS,
 TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, FN4 ,                                       TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,
 TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,                                                   TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,
-TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,       TRNS, TRNS,   VOLD, VOLU,       TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,
-TRNS, TRNS, TRNS, TRNS, TRNS,             TRNS, TRNS, TRNS,   TRNS, TRNS, TRNS,             TRNS, TRNS, TRNS, TRNS, TRNS,
-                                                      TRNS,   TRNS
+TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,       TRNS, TRNS,   MUTE, MPLY,       TRNS, TRNS, TRNS, TRNS, TRNS, TRNS, TRNS,
+TRNS, TRNS, TRNS, TRNS, TRNS,             TRNS, TRNS, TRNS,   VOLU, TRNS, TRNS,             TRNS, TRNS, TRNS, TRNS, TRNS,
+                                                      TRNS,   VOLD
 ),
 
 // Layer_02: keyboard functions
@@ -69,6 +69,10 @@ static const uint16_t PROGMEM fn_actions[] = {
     [ 4] = ACTION_LAYER_SET(0, ON_PRESS),                                   // FN4 - set Layer_00
 
     [ 5] = ACTION_MODS_TAP_KEY(MOD_LALT | MOD_LGUI | MOD_LCTL, KC_BSPC),    // FN5
+    [ 6] = ACTION_MODS_TAP_KEY(MOD_LALT | MOD_LGUI | MOD_LCTL, KC_BSPC),    // FN5
+    [ 7] = ACTION_LAYER_TAP_KEY(1, KC_SPC),
+    [ 8] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),
+    [ 9] = ACTION_MODS_ONESHOT(MOD_LGUI),
 };
 
 void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
