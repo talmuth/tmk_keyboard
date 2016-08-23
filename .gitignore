@@ -8,3 +8,7 @@
 *.map
 *.sym
 tags
+*~
+build/
+*.bak
+.DS_Store

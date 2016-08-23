@@ -65,13 +65,28 @@ void matrix_init(void)
 {
     DDRD |= (1<<6);
     PORTD |= (1<<6);
-    debug_enable = true;
+    //debug_enable = true;
 
     serial_init();
 
     // initialize matrix state: all keys off
     for (uint8_t i=0; i < MATRIX_ROWS; i++) matrix[i] = 0x00;
 
+    // wait for keyboard coming up
+    // otherwise LED status update fails
+    print("Reseting ");
+    while (1) {
+        print(".");
+        while (serial_recv());
+        serial_send(0x01);
+        _delay_ms(500);
+        if (serial_recv() == 0xFF) {
+            _delay_ms(500);
+            if (serial_recv() == 0x04)
+                break;
+        }
+    }
+    print(" Done\n");
     return;
 }
 
@@ -86,15 +101,26 @@ uint8_t matrix_scan(void)
     debug_hex(code); debug(" ");
 
     switch (code) {
-        case 0x7E:  // reset fail
-        case 0xFE:  // layout
-        case 0xFF:  // reset success
+        case 0xFF:  // reset success: FF 04
+            print("reset: ");
             _delay_ms(500);
-            // ignore response byte
-            debug("(response ignored:");
-            while ((code = serial_recv())) { debug(" "); debug_hex(code); }
-            debug(") ");
-            // FALL THROUGH
+            code = serial_recv();
+            xprintf("%02X\n", code);
+            if (code == 0x04) {
+                // LED status
+                led_set(host_keyboard_leds());
+            }
+            return 0;
+        case 0xFE:  // layout: FE <layout>
+            print("layout: ");
+            _delay_ms(500);
+            xprintf("%02X\n", serial_recv());
+            return 0;
+        case 0x7E:  // reset fail: 7E 01
+            print("reset fail: ");
+            _delay_ms(500);
+            xprintf("%02X\n", serial_recv());
+            return 0;
         case 0x7F:
             // all keys up
             for (uint8_t i=0; i < MATRIX_ROWS; i++) matrix[i] = 0x00;

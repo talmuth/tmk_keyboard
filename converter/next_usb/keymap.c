@@ -159,13 +159,13 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TRNS,PAUS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PSCR,FN3, BSLS,TRNS,  VOLD,     PGDN,  BTN1,MS_U,BTN2,WH_U,
     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,                   MS_L,MS_D,MS_R,WH_D,
     TRNS,     FN4, FN5, FN6, FN7, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,       TRNS,       TRNS,TRNS,TRNS,  
-    TRNS,RALT,                    TRNS,                         RGUI,TRNS,  TRNS,TRNS,TRNS,  TRNS,     TRNS,TRNS
+    TRNS,TRNS,                    TRNS,                         TRNS,TRNS,  TRNS,TRNS,TRNS,  TRNS,     TRNS,TRNS
     
     )
 };
 
 /* translates key to keycode */
-uint8_t keymap_key_to_keycode(uint8_t layer, key_t key)
+uint8_t keymap_key_to_keycode(uint8_t layer, keypos_t key)
 {
     return pgm_read_byte(&keymaps[(layer)][(key.row)][(key.col)]);
 }
