@@ -27,7 +27,7 @@
 # make flip-ee = Download the eeprom file to the device, using Atmel FLIP
 #                (must have Atmel FLIP installed).
 #
-# make debug = Start either simulavr or avarice as specified for debugging, 
+# make debug = Start either simulavr or avarice as specified for debugging,
 #              with avr-gdb or avr-insight as the front end for debugging.
 #
 # make filename.s = Just compile filename.c into the assembler code only.
@@ -42,7 +42,8 @@
 TARGET = teenesis_lufa
 
 # Directory common source filess exist
-TOP_DIR = ../..
+TMK_DIR = ../../tmk_core
+
 
 # Directory keyboard dependent files exist
 TARGET_DIR = .
@@ -124,9 +125,9 @@ NKRO_ENABLE = yes	# USB Nkey Rollover - not yet supported in LUFA
 
 # Search Path
 VPATH += $(TARGET_DIR)
-VPATH += $(TOP_DIR)
+VPATH += $(TMK_DIR)
 
-include $(TOP_DIR)/common.mk
-include $(TOP_DIR)/protocol.mk
-include $(TOP_DIR)/protocol/lufa.mk
-include $(TOP_DIR)/rules.mk
+include $(TMK_DIR)/common.mk
+include $(TMK_DIR)/protocol.mk
+include $(TMK_DIR)/protocol/lufa.mk
+include $(TMK_DIR)/rules.mk

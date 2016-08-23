@@ -117,30 +117,29 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
 }
 
 ////////////////////////////////////////////////////////////////////////////
-
 // TEENESIS keymaps. Rendered automatically in https://docs.google.com/spreadsheets/d/1UNBirTlrECQJ08_CumkZXu8rqGTfGoYYeWQ7XA4az-4/edit
 static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Layer0
 KEYMAP(
 
-    ESC , DEL , PSLS, APP , PMNS, PEQL,                                           LBRC, RBRC, RALT, RCTL, BSLS, VOLU,
-    PDOT, BSPC, D   , R   , W   , B   ,                                           J   , F   , U   , P   , EQL , VOLD,
-    Q   , A   , S   , H   , T   , G   ,                                           Y   , N   , E   , O   , I   , QUOT,
-    PPLS, Z   , X   , M   , C   , V   ,       SPC , F15 ,       F18 , F19 ,       K   , L   , COMM, DOT , SLSH, MINS,
-          FN24, FN23, FN22, FN21,       FN20, ENT , F14 ,       F17 , FN31, FN1 ,       LEFT, UP  , DOWN, RGHT,
-                                                    F13 ,       F16 
+    GRV , 1   , 2   , 3   , 4   , 5   ,                                           6   , 7   , 8   , 9   , 0   , MINS,
+    TAB , Q   , W   , E   , R   , T   ,                                           Y   , U   , I   , O   , P   , BSLS,
+    FN6 , A   , S   , D   , F   , G   ,                                           H   , J   , K   , L   , SCLN, QUOT,
+    LSFT, Z   , X   , C   , V   , B   ,       F9  , F10 ,       LBRC, RBRC,       N   , M   , COMM, DOT , SLSH, RSFT,
+          FN24, BSLS, LALT, FN21,       FN1 , FN5 , HOME,       PGUP, SPC , FN2 ,       LEFT, UP  , DOWN, RGHT,
+                                                    END ,       PGDN
 ),
 
 // Layer1
 KEYMAP(
 
-    P1  , P2  , P3  , P4  , P5  , P6  ,                                           P7  , P8  , TRNS, TRNS, P9  , P0  ,
-    EJCT, DEL , F11 , F12 , TRNS, TRNS,                                           TRNS,  F1 , LBRC, RBRC, PPLS, MUTE,
+    F1  , F2  , F3  , F4  , F5  , F6  ,                                           P7  , P8  , TRNS, TRNS, P9  , P0  ,
+    F8  , F9  , F10 , F11 , F12 , EQL ,                                           TRNS, TRNS, LBRC, RBRC, PPLS, EQL ,
     TRNS, 8   , 6   , 9   , 5   , 7   ,                                           3   , 1   , 0   , 2   , 4   , ENT ,
-    TRNS, F8  , F6  , F9  , F5  , F7  ,       TRNS, TRNS,       TRNS, TRNS,       F3  , SCLN, F10 , F2  , F4  , TRNS,
-          TRNS, TRNS, TRNS, TRNS,       TRNS, PENT, CAPS,       FN0 , TRNS, TRNS,       HOME, PGUP, PGDN, END ,
-                                                    TRNS,       TRNS
+    TRNS, F8  , F6  , F9  , F5  , F7  ,       TRNS, FN0 ,       MUTE, MPLY,       F3  , SCLN, F10 , F2  , F4  , TRNS,
+          TRNS, TRNS, TRNS, ENT ,       TRNS, TRNS, CAPS,       VOLU, TRNS, TRNS,       HOME, PGUP, PGDN, END ,
+                                                    TRNS,       VOLD
 ),
 
 // Layer2
@@ -173,11 +172,11 @@ KEYMAP(
 static const uint16_t PROGMEM fn_actions[] = {
     [ 0] = ACTION_FUNCTION(TEENSY_KEY),
     [ 1] = ACTION_LAYER_TAP_KEY(1, KC_SPC),
-//  [ 2] = ,
+    [ 2] = ACTION_LAYER_TAP_KEY(1, KC_ENT),
     [ 3] = ACTION_LAYER_TOGGLE(3),
 //  [ 4] = ,
-//  [ 5] = ,
-//  [ 6] = ,
+    [ 5] = ACTION_MODS_TAP_KEY(MOD_LALT | MOD_LGUI | MOD_LCTL, KC_BSPC),
+    [ 6] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),
 //  [ 7] = ,
 //  [ 8] = ,
 //  [ 9] = ,
@@ -196,7 +195,7 @@ static const uint16_t PROGMEM fn_actions[] = {
     [22] = ACTION_MODS_TAP_KEY(MOD_LALT, KC_TAB),
     [23] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),
     [24] = ACTION_MODS_TAP_KEY(MOD_RSFT, KC_GRV),
-//  [25] = ,
+    [25] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ENT),
 //  [26] = ,
 //  [27] = ,
 //  [28] = ,
@@ -211,7 +210,7 @@ static const uint16_t PROGMEM fn_actions[] = {
 #define FN_ACTIONS_SIZE (sizeof(fn_actions) / sizeof(fn_actions[0]))
 
 /* translates key to keycode */
-uint8_t keymap_key_to_keycode(uint8_t layer, key_t key)
+uint8_t keymap_key_to_keycode(uint8_t layer, keypos_t key)
 {
     if (layer < KEYMAPS_SIZE) {
         return pgm_read_byte(&keymaps[(layer)][(key.row)][(key.col)]);
@@ -232,4 +231,3 @@ action_t keymap_fn_to_action(uint8_t keycode)
     }
     return action;
 }
-
